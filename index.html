@@ -1,1 +1,1032 @@
-Hello World
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Delande Ingénierie</title>
+  <meta name="description" content="Delande Ingénierie – études littorales et aménagements maritimes" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #279fd9;
+      --primary-blue: #279fd9;
+      --primary-dark-blue: #2b439a;
+      --accent: #ff8a00;
+      --accent-gold: #f4c430;
+      --white: #fff;
+      --light-gray: #f8f9fa;
+      --dark-gray: #333;
+      --text-gray: #666;
+      --bg: #f6f9fc;
+      --card-bg: #fff;
+      --max-w: 1100px;
+      --radius: 16px;
+      --gap: 20px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: #0b1b2b;
+      line-height: 1.45;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--card-bg);
+      box-shadow: 0 2px 10px #0000001a;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      margin: 0;
+      color: var(--primary-dark-blue);
+    }
+
+    .brand .tag {
+      font-size: 12px;
+      color: #5f7f9e;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--primary-dark-blue);
+      text-decoration: none;
+      font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--primary);
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .burger svg {
+      width: 28px;
+      height: 28px;
+      color: var(--primary-dark-blue);
+    }
+
+    .mobile-menu {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      inset: 0;
+      background: #0b1b2bf7;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu a {
+      color: #fff;
+      font-size: 22px;
+      font-family: 'Orbitron', sans-serif;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Pages */
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding-top: 70px;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Hero Sections - Shared */
+    .hero, .page-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--primary-dark-blue);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, #fff, #eaf4fc);
+    }
+
+    .hero img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      border-radius: 0;
+      transform: scale(1.02);
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      pointer-events: none;
+      z-index: 2;
+      background: linear-gradient(180deg, #0b1b2b1f 0%, #0b1b2b47 40%, #0b1b2b2e 100%);
+    }
+
+    .hero__content {
+      max-width: 900px;
+      text-align: center;
+      color: #fff;
+      pointer-events: auto;
+    }
+
+    .hero h2 {
+      margin: 0 0 12px;
+      font-size: 36px;
+      line-height: 1.05;
+      color: #fff;
+      text-shadow: 0 6px 18px #00000073;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 720px;
+      color: #fffffff2;
+      font-size: 18px;
+      text-shadow: 0 4px 10px #00000059;
+    }
+
+    .page-hero {
+      height: 20vh;
+      margin-top: -5px;
+    }
+
+    .page-hero h1 {
+      font-size: 3.5rem;
+      text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+      letter-spacing: 5px;
+    }
+
+    /* Main Content */
+    main {
+      max-width: var(--max-w);
+      margin: auto;
+      padding: 20px;
+    }
+
+    section {
+      margin: 25px 0;
+      text-align: center;
+    }
+
+    .section-title {
+      color: var(--primary-dark-blue);
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    /* Grid Layouts - Shared */
+    .expertise-grid,
+    .mission-grid,
+    .myrealisations-grid,
+    .contact-info-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+
+    .realisations-grid
+    {
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+        gap:3rem
+    }
+
+    .realisation-card
+    {
+        position:relative;
+        overflow:hidden;
+        border-radius:20px;
+        height:350px;
+        box-shadow:0 5px 25px #0000001a;
+        transition:all .3s ease
+    }
+
+    .realisation-card:hover
+    {
+        transform:translateY(-5px);
+        box-shadow:0 15px 40px #0003
+    }
+
+    .realisation-card img
+    {
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        transition:transform .5s ease
+    }
+
+    .realisation-card:hover img
+    {
+        transform:scale(1.1)
+    }
+
+    .realisation-overlay
+    {
+        position:absolute;
+        bottom:0;
+        left:0;
+        right:0;
+        background:linear-gradient(to top,#2b439af2,transparent);
+        color:var(--white);
+        padding:2rem;
+        transform:translateY(45%);
+        transition:transform .4s ease
+    }
+
+    .realisation-card:hover .realisation-overlay
+    {
+        transform:translateY(0)
+    }
+
+    .realisation-overlay h3
+    {
+        color:var(--primary-white);
+        margin-bottom:.5rem;
+        font-size:1.5rem
+    }
+
+    .realisation-overlay p
+    {
+        opacity:0;
+        transform:translateY(10px);
+        transition:all .3s ease .1s
+    }
+
+    .realisation-card:hover .realisation-overlay p
+    {
+        opacity:1;
+        transform:translateY(0)
+    }
+
+
+    .expertise-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .mission-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+
+    .myrealisations-grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+    }
+
+    .contact-info-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Card Styles - Shared */
+    .expertise-card,
+    .mission-card,
+    .contact-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 25px #00000014;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .expertise-card:hover,
+    .mission-card:hover,
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px #279fd926;
+      border-color: var(--primary-blue);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 35px #279fd926;
+    }
+
+    /* Icons - Shared */
+    .expertise-icon,
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-blue);
+      transition: transform 0.3s ease;
+    }
+
+    .expertise-card:hover .expertise-icon {
+      transform: scale(1.1);
+    }
+
+    /* Card Headings & Text - Shared */
+    .expertise-card h3,
+    .mission-card h3,
+    .contact-card h3 {
+      color: var(--primary-dark-blue);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .expertise-card p,
+    .mission-card p,
+    .contact-card p {
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    /* Mission Specific */
+    .mission-card {
+      border-left: 5px solid var(--primary-blue);
+      text-align: left;
+    }
+
+    .mission-number {
+      font-size: 3rem;
+      color: var(--primary-blue);
+      opacity: 0.3;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    /* Domain Cards */
+    .domain-card {
+      background: var(--white);
+      padding: 3rem;
+      margin-bottom: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 25px #00000014;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .domain-card:nth-child(even) {
+      background: var(--light-gray);
+    }
+
+    .domain-card:nth-child(even) .domain-content {
+      order: 2;
+    }
+
+    .domain-card:nth-child(even) .domain-image {
+      order: 1;
+    }
+
+    .domain-content h3 {
+      font-size: 2rem;
+      color: var(--primary-dark-blue);
+      margin-bottom: 1.5rem;
+    }
+
+    .domain-content .subtitle {
+      font-size: 1.1rem;
+      color: var(--primary-blue);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .domain-content ul,
+    .mission-text ul {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .domain-content li,
+    .mission-text li {
+      text-align: left;
+      padding: 0.8rem 0;
+      padding-left: 2rem;
+      position: relative;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    .domain-content li::before,
+    .mission-text li::before {
+      content: '⚓';
+      position: absolute;
+      left: 0;
+      color: var(--primary-blue);
+      font-size: 1.3rem;
+    }
+
+    .domain-image {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px #0000001a;
+    }
+
+    /* Realisation Cards - Shared */
+
+    .myrealisation-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 25px #0000001a;
+      transition: all 0.3s ease;
+    }
+
+    .myrealisation-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px #0003;
+    }
+
+
+    .myrealisation-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .myrealisation-card:hover .myrealisation-image {
+      transform: scale(1.1);
+    }
+
+
+    .myrealisation-content {
+      padding: 2rem;
+    }
+
+
+    .myrealisation-content h3 {
+      color: var(--primary-dark-blue);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .myrealisation-content .category {
+      color: var(--primary-blue);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+
+    .myrealisation-content p {
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    /* Contact Links */
+    .contact-card a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .contact-card a:hover {
+      color: var(--primary-dark-blue);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #516b84;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .domain-card,
+      .contact-container {
+        grid-template-columns: 1fr !important;
+        padding: 2rem;
+      }
+
+      .myrealisations-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero img {
+        height: 380px;
+      }
+
+      .hero h2 {
+        font-size: 26px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .page-hero h1 {
+        font-size: 2rem;
+      }
+
+      .domain-card .domain-content {
+        order: 1 !important;
+      }
+
+      .domain-card .domain-image {
+        order: 2 !important;
+      }
+
+      .domain-card:nth-child(even) .domain-content,
+      .domain-card:nth-child(even) .domain-image {
+        order: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="brand">
+      <div><img class="logo" src="./img/logo.svg" alt="logo delande ingénierie"></div>
+      <div>
+        <h1>Delande Ingénierie</h1>
+        <div class="tag">Études littorales & aménagements maritimes</div>
+      </div>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a onclick="navigateTo('accueil-section')" class="active">Accueil</a>
+      <a onclick="navigateTo('expertise-section')">Expertise</a>
+      <a onclick="navigateTo('mission-section')">Mission</a>
+      <a onclick="navigateTo('realisations-section')">Réalisations</a>
+      <a onclick="navigateTo('contact-section')">Contact</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a onclick="navigateTo('accueil-section')">Accueil</a>
+    <a onclick="navigateTo('expertise-section')">Expertise</a>
+    <a onclick="navigateTo('mission-section')">Mission</a>
+    <a onclick="navigateTo('realisations-section')">Réalisations</a>
+    <a onclick="navigateTo('contact-section')">Contact</a>
+  </div>
+</header>
+
+<div class="page active" id="accueil-section">
+  <section id="accueil" class="hero">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80" alt="Ouvrage maritime">
+    <div class="hero__overlay">
+      <div class="hero__content">
+        <h2>Expertise maritime & ingénierie côtière</h2>
+        <p>Études, conception et réalisation d'aménagements maritimes en Polynésie et à l'international.</p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="expertise">
+      <h3 class="section-title">Domaines d'expertise</h3>
+      <div class="expertise-grid">
+        <div class="expertise-card">
+          <div class="expertise-icon">🗝️</div>
+          <h3>Aménagements Maritimes</h3>
+          <p>Conception et réalisation de quais, marinas et débarcadères adaptés aux environnements côtiers et offshore.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">🌊</div>
+          <h3>Études Littorales</h3>
+          <p>Analyse du trait de côte et évaluation de l'aléa submersion pour protéger les zones côtières.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">🔧</div>
+          <h3>Conduites Sous-Marines</h3>
+          <p>Analyse de pose et dimensionnement de conduites sous-marines pour tous types d'infrastructures.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon">⚙️</div>
+          <h3>Équipements Profonds</h3>
+          <p>Installation d'équipements en grande profondeur avec une expertise technique pointue.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission">
+      <h3 class="section-title">Nos Missions</h3>
+      <div class="domain-card">
+        <div class="domain-content">
+          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+            DELANDE INGENIERIE accompagne les bureaux d'étude et entreprises en Polynésie et à l'international sur tous les stades d'un projet, depuis les études de faisabilité jusqu'aux travaux d'exécution.
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            Fort de 15 années d'expérience en ingénierie, nous proposons :
+          </p>
+          <ul>
+            <li>Mission de maîtrise d'œuvre complète</li>
+            <li>Études de faisabilité et conception</li>
+            <li>Suivi et coordination des travaux</li>
+            <li>Expertise technique maritime</li>
+            <li>Accompagnement sur mesure</li>
+          </ul>
+        </div>
+        <img src="img/etude_apataki.png?w=800   " alt="Ingénierie maritime" class="domain-image">
+      </div>
+    </section>
+
+    <section id="realisations">
+      <h3 class="section-title">Nos Réalisations</h3>
+      <div class="realisations-grid">
+        <div class="realisation-card">
+          <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=300" alt="Marina" class="realisation-image">
+          <div class="realisation-overlay">
+            <div class="category">Infrastructures Portuaires</div>
+            <h3>Aménagement de Marina</h3>
+            <p>Conception et réalisation d'une marina moderne</p>
+          </div>
+        </div>
+        <div class="realisation-card">
+          <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300" alt="Quai" class="realisation-image">
+          <div class="realisation-overlay">
+            <div class="category">Ouvrages Maritimes</div>
+            <h3>Infrastructure Portuaire</h3>
+            <p>Construction de quais et installations maritimes</p>
+          </div>
+        </div>
+        <div class="realisation-card">
+          <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?w=300" alt="Offshore" class="realisation-image">
+          <div class="realisation-overlay">
+            <div class="category">Conduites Sous-Marines</div>
+            <h3>Projet Offshore</h3>
+            <p>Installation d'équipements en grande profondeur</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3 class="section-title">Contactez-nous</h3>
+      <div class="contact-info-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Adresse</h3>
+          <p>Polynésie Française<br>Tahiti</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <p><a href="mailto:contact@delande-ingenierie.pf">contact@delande-ingenierie.pf</a></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <h3>Téléphone</h3>
+          <p><a href="tel:+689">+689 87 75 30 06</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="page" id="expertise-section">
+  <div class="page-hero">
+    <h1>EXPERTISE</h1>
+  </div>
+
+  <section>
+    <div class="domain-card">
+      <div class="domain-content">
+        <h3>🌊 Expertise des processus littoraux et maritimes</h3>
+        <p class="subtitle">Comprendre le fonctionnement de nos milieux naturels pour une gestion durable</p>
+        <ul>
+          <li>Fonctionnement hydro-sédimentaire</li>
+          <li>Suivi et évolution du trait de côte</li>
+          <li>Évaluation des impacts anthropiques et climatiques</li>
+          <li>Mesure et analyse des conditions hydrodynamiques</li>
+          <li>Modélisation numérique des processus côtiers</li>
+        </ul>
+      </div>
+      <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300" alt="Littoral" class="domain-image">
+    </div>
+
+    <div class="domain-card">
+      <div class="domain-content">
+        <h3>🏖️ Aménagement du littoral</h3>
+        <p class="subtitle">Renforcer la résilience de nos côtes face aux impacts du changement climatique</p>
+        <ul>
+          <li>Prévention contre la submersion marine</li>
+          <li>Gestion des risques côtiers et protection contre l'érosion</li>
+          <li>Stratégie de gestion de la bande côtière</li>
+          <li>Préservation et restauration des écosystèmes littoraux</li>
+          <li>Vulnérabilité et adaptation au changement climatique</li>
+        </ul>
+      </div>
+      <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=300" alt="Aménagement" class="domain-image">
+    </div>
+
+    <div class="domain-card">
+      <div class="domain-content">
+        <h3>⚓ Ouvrages maritimes et portuaires</h3>
+        <p class="subtitle">Concevoir des ouvrages éco-responsables au plus proche des besoins</p>
+        <ul>
+          <li>Émissaires et conduites sous-marines</li>
+          <li>Ouvrages et infrastructures portuaires</li>
+          <li>Quais, marinas et débarcadères</li>
+          <li>Travaux de dragage et rechargement de plage</li>
+          <li>Installation d'équipements en grande profondeur</li>
+        </ul>
+      </div>
+      <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=300" alt="Port" class="domain-image">
+    </div>
+
+    <div class="domain-card">
+      <div class="domain-content">
+        <h3>🚢 Économie bleue et développement du littoral</h3>
+        <p class="subtitle">Accompagner le développement au plus proche des acteurs économiques</p>
+        <ul>
+          <li>Plaisance et grande plaisance</li>
+          <li>Énergies marines renouvelables</li>
+          <li>Pêche et aquaculture</li>
+          <li>Transport maritime</li>
+          <li>Tourisme côtier durable</li>
+        </ul>
+      </div>
+      <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300" alt="Économie bleue" class="domain-image">
+    </div>
+  </section>
+</div>
+
+<div class="page" id="mission-section">
+  <div class="page-hero">
+    <h1>NOTRE MISSION</h1>
+  </div>
+
+  <section>
+    <h2 class="section-title">Nous vous accompagnons à chaque étape</h2>
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mission-number">01</div>
+        <h3>Études de faisabilité</h3>
+        <p>Analyse approfondie de votre projet : études préliminaires, évaluation des contraintes techniques et environnementales, études de rentabilité et recommandations stratégiques.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-number">02</div>
+        <h3>Conception et ingénierie</h3>
+        <p>Élaboration des plans détaillés, dimensionnement des ouvrages, modélisation numérique, calculs de structures et choix des matériaux adaptés à l'environnement marin.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-number">03</div>
+        <h3>Maîtrise d'œuvre</h3>
+        <p>Suivi complet de votre projet : coordination des entreprises, supervision des travaux, contrôle qualité, respect des délais et du budget, réception des ouvrages.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-number">04</div>
+        <h3>Expertise technique</h3>
+        <p>Conseil spécialisé en ingénierie maritime : diagnostics d'ouvrages existants, études d'impact, assistance à maîtrise d'ouvrage, expertises judiciaires.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-number">05</div>
+        <h3>Études environnementales</h3>
+        <p>Évaluation des impacts sur le milieu marin, études d'incidence, dossiers réglementaires, propositions de mesures compensatoires et de suivi environnemental.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-number">06</div>
+        <h3>Accompagnement sur-mesure</h3>
+        <p>Solutions adaptées à vos besoins spécifiques en Polynésie Française et à l'international. Une approche personnalisée pour chaque projet, quelle que soit sa complexité.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="page" id="realisations-section">
+  <div class="page-hero">
+    <h1>NOS RÉALISATIONS</h1>
+  </div>
+
+  <section>
+    <div class="myrealisations-grid">
+      <div class="myrealisation-card">
+        <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=300" alt="Marina" class="myrealisation-image">
+        <div class="myrealisation-content">
+          <div class="category">Infrastructures Portuaires</div>
+          <h3>Aménagement de Marina - Tahiti</h3>
+          <p>Conception et réalisation d'une marina moderne de 50 places avec pontons flottants, sanitaires et système de sécurité. Projet intégrant les contraintes de houle et de marnage du lagon.</p>
+        </div>
+      </div>
+
+      <div class="myrealisation-card">
+        <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300" alt="Quai" class="myrealisation-image">
+        <div class="myrealisation-content">
+          <div class="category">Ouvrages Maritimes</div>
+          <h3>Extension Quai Commercial - Moorea</h3>
+          <p>Extension de 80m de quai pour accueil de navires de charge. Études de houle, dimensionnement de la structure en béton armé et suivi des travaux de construction.</p>
+        </div>
+      </div>
+
+      <div class="myrealisation-card">
+        <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?w=300" alt="Offshore" class="myrealisation-image">
+        <div class="myrealisation-content">
+          <div class="category">Conduites Sous-Marines</div>
+          <h3>Émissaire en Mer - Papeete</h3>
+          <p>Étude et conception d'un émissaire en mer de 1200m avec diffuseur. Modélisation de la dispersion, calculs de stabilité de la conduite et suivi de pose.</p>
+        </div>
+      </div>
+
+      <div class="myrealisation-card">
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300" alt="Protection" class="myrealisation-image">
+        <div class="myrealisation-content">
+          <div class="category">Protection Côtière</div>
+          <h3>Étude de Protection Littorale - Bora Bora</h3>
+          <p>Étude du trait de côte et conception d'ouvrages de protection contre l'érosion. Analyse de l'évolution du littoral et recommandations d'aménagement durable.</p>
+        </div>
+      </div>
+
+      <div class="myrealisation-card">
+        <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=300" alt="Plage" class="myrealisation-image">
+        <div class="myrealisation-content">
+          <div class="category">Aménagement Littoral</div>
+          <h3>Rechargement de Plage - Punaauia</h3>
+          <p>Étude et réalisation d'un rechargement de plage avec 5000m³ de sable. Modélisation de la dynamique sédimentaire et suivi post-travaux de l'évolution du profil.</p>
+        </div>
+      </div>
+
+      <div class="myrealisation-card">
+        <img src="https://images.unsplash.com/photo-1589310243389-96a1ca5f4ce0?w=300" alt="Études" class="myrealisation-image">
+        <div class="myrealisation-content">
+          <div class="category">Études Spécialisées</div>
+          <h3>Étude Hydrodynamique - Rangiroa</h3>
+          <p>Campagne de mesures et modélisation numérique des courants dans la passe. Analyse des conditions de navigation et recommandations pour l'aménagement du chenal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="page" id="contact-section">
+  <div class="page-hero">
+    <h1>CONTACTEZ-NOUS</h1>
+  </div>
+
+  <section>
+    <div class="contact-info-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <h3>Email</h3>
+        <p><a href="mailto:contact@delande-ingenierie.pf">contact@delande-ingenierie.pf</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>Téléphone</h3>
+        <p><a href="tel:+689">+689 87 75 30 06</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h3>Adresse</h3>
+        <p>Polynésie Française<br>Tahiti</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🕐</div>
+        <h3>Horaires</h3>
+        <p>Lundi - Vendredi<br>8h00 - 17h00</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--light-gray); padding: 5rem 5%; margin-top: 5rem;">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <h2 class="section-title">Zone d'intervention</h2>
+      <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.2rem; line-height: 1.9; color: var(--text-gray); margin-bottom: 2rem;">
+          Basé à Tahiti, DELANDE INGENIERIE intervient sur l'ensemble de la Polynésie Française : Îles de la Société, Tuamotu, Marquises, Australes et Gambier.
+        </p>
+        <p style="font-size: 1.2rem; line-height: 1.9; color: var(--text-gray);">
+          Nous développons également notre expertise à l'international pour des projets d'ingénierie maritime dans le Pacifique et au-delà.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  © 2025 Delande Ingénierie – Tous droits réservés
+</footer>
+
+<script>
+function navigateTo(pageId) {
+  document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => link.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  event.target.classList.add('active');
+  document.getElementById('mobileMenu').classList.remove('open');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const burger = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.domain-card, .mission-card, .realisation-card, .myrealisation-card, .contact-card, .expertise-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'all 0.8s ease';
+  observer.observe(el);
+});
+
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header');
+  header.style.boxShadow = window.pageYOffset > 100 ? '0 4px 20px rgba(0,0,0,0.15)' : '0 2px 15px rgba(0,0,0,0.1)';
+});
+</script>
+</body>
+</html>
