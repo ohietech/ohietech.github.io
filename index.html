@@ -620,7 +620,61 @@
         order: 0;
       }
     }
+
+    /* Desktop submenu */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--white);
+  box-shadow: 0 10px 25px #00000026;
+  border-radius: 12px;
+  padding: 12px 0;
+  min-width: 240px;
+  display: none;
+  flex-direction: column;
+  z-index: 200;
+}
+
+.submenu a {
+  padding: 8px 20px;
+  white-space: nowrap;
+}
+
+/* Hover desktop */
+@media (min-width: 769px) {
+  .has-submenu:hover .submenu {
+    display: flex;
+  }
+}
+
+/* Mobile submenu toujours visible */
+.mobile-expertise {
+  text-align: center;
+}
+
+.mobile-submenu {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
   </style>
+  <style>
+    /* Sous-menu Expertise */
+    .submenu a,
+    .mobile-submenu a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      opacity: 0.85;
+    }
+  </style>
+
 </head>
 <body>
 <header>
@@ -632,20 +686,48 @@
         <div class="tag">Études littorales & aménagements maritimes</div>
       </div>
     </div>
+
+    <!-- NAV DESKTOP -->
     <nav class="nav-links" id="navLinks">
       <a onclick="navigateTo('accueil-section')" class="active">Accueil</a>
-      <a onclick="navigateTo('expertise-section')">Expertise</a>
+
+      <div class="nav-item has-submenu">
+        <a>Expertise</a>
+        <div class="submenu">
+          <a onclick="navigateTo('expertise-section')">Processus littoraux</a>
+          <a onclick="navigateTo('expertise-section')">Aménagement du littoral</a>
+          <a onclick="navigateTo('expertise-section')">Ouvrages maritimes</a>
+          <a onclick="navigateTo('expertise-section')">Économie bleue</a>
+        </div>
+      </div>
+
       <a onclick="navigateTo('mission-section')">Mission</a>
       <a onclick="navigateTo('realisations-section')">Réalisations</a>
       <a onclick="navigateTo('contact-section')">Contact</a>
     </nav>
+
     <button class="burger" id="burgerBtn" aria-label="Menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
     </button>
   </div>
+
+  <!-- MENU MOBILE -->
   <div class="mobile-menu" id="mobileMenu">
     <a onclick="navigateTo('accueil-section')">Accueil</a>
-    <a onclick="navigateTo('expertise-section')">Expertise</a>
+
+    <div class="mobile-expertise">
+      <a onclick="navigateTo('expertise-section')">Expertise</a>
+      <div class="mobile-submenu">
+        <a onclick="navigateTo('expertise-section')">Processus littoraux</a>
+        <a onclick="navigateTo('expertise-section')">Aménagement du littoral</a>
+        <a onclick="navigateTo('expertise-section')">Ouvrages maritimes</a>
+        <a onclick="navigateTo('expertise-section')">Économie bleue</a>
+      </div>
+    </div>
+
     <a onclick="navigateTo('mission-section')">Mission</a>
     <a onclick="navigateTo('realisations-section')">Réalisations</a>
     <a onclick="navigateTo('contact-section')">Contact</a>
