@@ -245,20 +245,112 @@
       color: var(--primary-dark-blue);
       font-family: 'Orbitron', sans-serif;
       margin-bottom: 16px;
-      font-size: 24px;
+      font-size: 32px;
     }
+
+
+/* Contact – carte unique */
+.contact-card--single {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem;
+  text-align: left;
+}
+
+/* Header branding */
+.contact-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.contact-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+}
+
+/* Texte branding */
+.contact-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-company {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: var(--primary-dark-blue);
+}
+
+.contact-tagline {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #5f7f9e;
+  font-style: normal;
+}
+
+/* Détails */
+.contact-details {
+  border-top: 1px solid #e5eef6;
+  padding-top: 1.5rem;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  font-size: 1.05rem;
+  color: var(--text-gray);
+}
+
+.contact-label {
+  font-weight: 700;
+  color: var(--primary-dark-blue);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-details a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-details a:hover {
+  color: var(--primary-dark-blue);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-details {
+    text-align: left;
+  }
+
+  .contact-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .contact-label {
+    font-size: 0.75rem;
+  }
+}
 
     /* Grid Layouts - Shared */
     .expertise-grid,
     .mission-grid,
     .myrealisations-grid,
-    .contact-info-grid {
-      display: grid;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-
     .realisations-grid
     {
         display:grid;
@@ -356,15 +448,99 @@
       margin: 0 auto;
     }
 
+
+/* Bureau d'études – version verticale */
+#bureau-etudes {
+  padding: 5rem 1rem;
+}
+
+.bureau-block {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.bureau-block--reverse {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.bureau-block--reverse .bureau-text {
+  order: 2;
+}
+
+.bureau-block--reverse .bureau-image {
+  order: 1;
+}
+
+.bureau-text h4 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  color: var(--primary-dark-blue);
+  margin-bottom: 1.2rem;
+}
+
+.bureau-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-gray);
+  margin-bottom: 1rem;
+}
+
+/* Image */
+.bureau-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Bloc final mis en avant */
+.bureau-block--highlight {
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+  padding: 3rem;
+  border-radius: 30px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .bureau-block,
+  .bureau-block--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .bureau-block--reverse .bureau-text,
+  .bureau-block--reverse .bureau-image {
+    order: initial;
+  }
+
+  .bureau-image img {
+    max-height: 260px;
+  }
+}
+
     /* Card Styles - Shared */
+
+
     .expertise-card,
-    .mission-card,
-    .contact-card {
+    .mission-card {
       background: var(--white);
       padding: 2.5rem;
       border-radius: 20px;
       box-shadow: 0 5px 25px #00000014;
       text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .contact-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 25px #00000014;
+      text-align: left;
       transition: all 0.3s ease;
       border: 2px solid transparent;
     }
@@ -397,10 +573,14 @@
 
     /* Card Headings & Text - Shared */
     .expertise-card h3,
-    .mission-card h3,
-    .contact-card h3 {
+    .mission-card h3{
       color: var(--primary-dark-blue);
       margin-bottom: 1rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+        .contact-card h3 {
+      color: var(--primary-dark-blue);
       font-size: 1.4rem;
       font-weight: 700;
     }
@@ -694,14 +874,12 @@
       <div class="nav-item has-submenu">
         <a>Expertise</a>
         <div class="submenu">
-          <a onclick="navigateTo('expertise-section')">Processus littoraux</a>
-          <a onclick="navigateTo('expertise-section')">Aménagement du littoral</a>
-          <a onclick="navigateTo('expertise-section')">Ouvrages maritimes</a>
-          <a onclick="navigateTo('expertise-section')">Économie bleue</a>
+          <a onclick="navigateTo('expertise-section-am')">Aménagements maritimes</a>
+          <a onclick="navigateTo('expertise-section-elppr')">Etudes littorales et PPR</a>
+          <a onclick="navigateTo('expertise-section-tsm')">Travaux sous-marins</a>
         </div>
       </div>
 
-      <a onclick="navigateTo('mission-section')">Mission</a>
       <a onclick="navigateTo('realisations-section')">Réalisations</a>
       <a onclick="navigateTo('contact-section')">Contact</a>
     </nav>
@@ -721,14 +899,11 @@
     <div class="mobile-expertise">
       <a onclick="navigateTo('expertise-section')">Expertise</a>
       <div class="mobile-submenu">
-        <a onclick="navigateTo('expertise-section')">Processus littoraux</a>
-        <a onclick="navigateTo('expertise-section')">Aménagement du littoral</a>
-        <a onclick="navigateTo('expertise-section')">Ouvrages maritimes</a>
-        <a onclick="navigateTo('expertise-section')">Économie bleue</a>
+        <a onclick="navigateTo('expertise-section-am')">Aménagements maritimes</a>
+        <a onclick="navigateTo('expertise-section-elppr')">Etudes littorales et PPR</a>
+        <a onclick="navigateTo('expertise-section-tsm')">Travaux sous-marins</a>
       </div>
     </div>
-
-    <a onclick="navigateTo('mission-section')">Mission</a>
     <a onclick="navigateTo('realisations-section')">Réalisations</a>
     <a onclick="navigateTo('contact-section')">Contact</a>
   </div>
@@ -736,183 +911,500 @@
 
 <div class="page active" id="accueil-section">
   <section id="accueil" class="hero">
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80" alt="Ouvrage maritime">
+    <img src="img/Faka.jpg?auto=format&fit=crop&w=1400&q=80" alt="fakara nord">
     <div class="hero__overlay">
       <div class="hero__content">
         <h2>Expertise maritime & ingénierie côtière</h2>
-        <p>Études, conception et réalisation d'aménagements maritimes en Polynésie et à l'international.</p>
+<!--        <p>Études, conception et réalisation d'aménagements maritimes en Polynésie et à l'international.</p>-->
       </div>
     </div>
   </section>
 
   <main>
     <section id="expertise">
-      <h3 class="section-title">Domaines d'expertise</h3>
+<!--      <h3 class="section-title">Domaines d'expertise</h3>-->
       <div class="expertise-grid">
         <div class="expertise-card">
-          <div class="expertise-icon">🗝️</div>
+          <div class="expertise-icon"><img src="img/icone.png" width="256px" /></div>
           <h3>Aménagements Maritimes</h3>
-          <p>Conception et réalisation de quais, marinas et débarcadères adaptés aux environnements côtiers et offshore.</p>
+<!--          <p>Conception et réalisation de quais, marinas et débarcadères adaptés aux environnements côtiers et offshore.</p>-->
         </div>
         <div class="expertise-card">
-          <div class="expertise-icon">🌊</div>
-          <h3>Études Littorales</h3>
-          <p>Analyse du trait de côte et évaluation de l'aléa submersion pour protéger les zones côtières.</p>
+          <div class="expertise-icon"><img src="img/inconeppr.png" width="256px" /></div>
+          <h3>Études Littorales et PPR</h3>
+<!--          <p>Analyse du trait de côte et évaluation de l'aléa submersion pour protéger les zones côtières.</p>-->
         </div>
         <div class="expertise-card">
-          <div class="expertise-icon">🔧</div>
-          <h3>Conduites Sous-Marines</h3>
-          <p>Analyse de pose et dimensionnement de conduites sous-marines pour tous types d'infrastructures.</p>
-        </div>
-        <div class="expertise-card">
-          <div class="expertise-icon">⚙️</div>
-          <h3>Équipements Profonds</h3>
-          <p>Installation d'équipements en grande profondeur avec une expertise technique pointue.</p>
+          <div class="expertise-icon"><img src="img/travauxmarins.png" width="256px" /></div>
+          <h3>Travaux Sous-Marins</h3>
+<!--          <p>Analyse de pose et dimensionnement de conduites sous-marines pour tous types d'infrastructures.</p>-->
         </div>
       </div>
     </section>
 
-    <section id="mission">
-      <h3 class="section-title">Nos Missions</h3>
-      <div class="domain-card">
-        <div class="domain-content">
-          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
-            DELANDE INGENIERIE accompagne les bureaux d'étude et entreprises en Polynésie et à l'international sur tous les stades d'un projet, depuis les études de faisabilité jusqu'aux travaux d'exécution.
+
+
+    <section id="bureau-etudes">
+
+      <h3 class="section-title" style="margin-bottom:50px">Notre bureau d’études</h3>
+
+      <!-- Bloc 1 -->
+      <div class="bureau-block">
+        <div class="bureau-text">
+          <h4>Une expertise maritime ancrée en Polynésie</h4>
+          <p>
+            Fort de plus de <strong>15 ans d’expérience en ingénierie maritime</strong>,
+            Delande Ingénierie accompagne les acteurs publics et privés dans la conception,
+            l’étude et l’optimisation de leurs projets en Polynésie française.
           </p>
-          <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-            Fort de 15 années d'expérience en ingénierie, nous proposons :
+          <p>
+            Ancré au plus près des réalités du <em>fenua</em>, notre bureau d’études développe
+            des solutions fiables, pragmatiques et adaptées aux enjeux littoraux
+            et aux environnements insulaires.
           </p>
-          <ul>
-            <li>Mission de maîtrise d'œuvre complète</li>
-            <li>Études de faisabilité et conception</li>
-            <li>Suivi et coordination des travaux</li>
-            <li>Expertise technique maritime</li>
-            <li>Accompagnement sur mesure</li>
-          </ul>
         </div>
-        <img src="img/etude_apataki.png?w=800   " alt="Ingénierie maritime" class="domain-image">
+
+        <div class="bureau-image">
+          <img src="./img/Faka-sud.jpg" alt="Études littorales en Polynésie">
+        </div>
+      </div>
+
+      <!-- Bloc 2 -->
+      <div class="bureau-block bureau-block--reverse">
+        <div class="bureau-text">
+          <h4>Une approche globale et partenariale</h4>
+          <p>
+            Pour répondre à l’ensemble des besoins d’un projet, nous nous appuyons
+            sur un <strong>réseau de partenaires fiables et complémentaires</strong> :
+            modélisation numérique, structures, environnement, géotechnique ou VRD.
+          </p>
+          <p>
+            Cette synergie nous permet de proposer une approche
+            <strong>complète, cohérente et techniquement maîtrisée</strong>,
+            à chaque étape du projet.
+          </p>
+        </div>
+
+        <div class="bureau-image">
+          <img src="./img/nunue.jpg" alt="Approche partenariale et ingénierie">
+        </div>
+      </div>
+
+      <!-- Bloc 3 -->
+      <div class="bureau-block bureau-block--highlight">
+        <div class="bureau-text">
+          <h4>Un accompagnement engagé et transparent</h4>
+          <p>
+            Collectivités, entreprises ou particuliers :
+            nous vous accompagnons avec <strong>rigueur, transparence et engagement</strong>
+            pour sécuriser vos choix et concrétiser vos aménagements maritimes
+            en toute confiance.
+          </p>
+        </div>
+
+        <div class="bureau-image">
+          <img src="./img/PPR.jpg" alt="Accompagnement des projets maritimes">
+        </div>
       </div>
     </section>
 
-    <section id="realisations">
-      <h3 class="section-title">Nos Réalisations</h3>
-      <div class="realisations-grid">
-        <div class="realisation-card">
-          <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=300" alt="Marina" class="realisation-image">
-          <div class="realisation-overlay">
-            <div class="category">Infrastructures Portuaires</div>
-            <h3>Aménagement de Marina</h3>
-            <p>Conception et réalisation d'une marina moderne</p>
-          </div>
-        </div>
-        <div class="realisation-card">
-          <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300" alt="Quai" class="realisation-image">
-          <div class="realisation-overlay">
-            <div class="category">Ouvrages Maritimes</div>
-            <h3>Infrastructure Portuaire</h3>
-            <p>Construction de quais et installations maritimes</p>
-          </div>
-        </div>
-        <div class="realisation-card">
-          <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?w=300" alt="Offshore" class="realisation-image">
-          <div class="realisation-overlay">
-            <div class="category">Conduites Sous-Marines</div>
-            <h3>Projet Offshore</h3>
-            <p>Installation d'équipements en grande profondeur</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
+    <section id="contact" style="margin-top:-100px;">
       <h3 class="section-title">Contactez-nous</h3>
-      <div class="contact-info-grid">
-        <div class="contact-card">
-          <div class="contact-icon">📍</div>
-          <h3>Adresse</h3>
-          <p>Polynésie Française<br>Tahiti</p>
+
+      <div class="contact-card contact-card--single">
+        <div class="contact-header">
+          <img src="./img/logo.svg" alt="Logo Delande Ingénierie" class="contact-logo">
+
+          <div class="contact-brand">
+            <h3 class="contact-company">Delande Ingénierie</h3>
+            <p class="contact-tagline">Études littorales & aménagements maritimes</p>
+          </div>
         </div>
-        <div class="contact-card">
-          <div class="contact-icon">📧</div>
-          <h3>Email</h3>
-          <p><a href="mailto:contact@delande-ingenierie.pf">contact@delande-ingenierie.pf</a></p>
+
+        <div class="contact-details">
+          <div class="contact-row">
+            <span class="contact-label">Adresse</span>
+            <span>Polynésie Française – Tahiti</span>
+          </div>
+
+          <div class="contact-row">
+            <span class="contact-label">Email</span>
+            <a href="mailto:contact@delande-ingenierie.pf">contact@delande-ingenierie.pf</a>
+          </div>
+
+          <div class="contact-row">
+            <span class="contact-label">Téléphone</span>
+            <a href="tel:+689">+689 87 75 30 06</a>
+          </div>
         </div>
-        <div class="contact-card">
-          <div class="contact-icon">📞</div>
-          <h3>Téléphone</h3>
-          <p><a href="tel:+689">+689 87 75 30 06</a></p>
+      </div>
+    </section>
+
+
+  </main>
+</div>
+
+
+<div class="page" id="expertise-section-am">
+  <br/><br/>
+  <div class="page-hero">
+    <h1>AMÉNAGEMENTS MARITIMES</h1>
+  </div>
+
+  <main>
+    <!-- INTRODUCTION -->
+    <section >
+      <div class="expertise-grid">
+        <div class="expertise-card">
+          <div class="expertise-icon"><img src="img/icone.png" width="256px" /></div>
+          <h3>Concevoir des ouvrages maritimes durables et adaptés au fenua</h3>
+          <p>
+            Delande Ingénierie, bureau d’études spécialisé en ingénierie maritime,
+            accompagne les maîtres d’ouvrage publics et privés dans la conception,
+            l’étude et l’optimisation d’aménagements maritimes en Polynésie française.
+          </p>
+
+          <p>
+            Nos missions s’appuient sur une connaissance approfondie des environnements
+            littoraux et lagonaires, afin de proposer des solutions techniquement fiables,
+            durables et adaptées aux usages locaux.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE METIER -->
+    <section>
+      <h2 class="section-title">Notre expertise en aménagements maritimes</h2>
+
+      <div class="mission-grid">
+
+        <div class="mission-card">
+          <h3>Marinas</h3>
+          <p>
+            Études et conception de marinas et ports de plaisance, intégrant les contraintes
+            nautiques, environnementales et terrestres : agitation portuaire,
+            conditions d’accostage, accès, réseaux et exploitation.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Quais, débarcadères et appontements</h3>
+          <p>
+            Études et dimensionnement d’ouvrages d’accostage
+            (ouvrages poids, palplanches, quais sur pieux ou structures mixtes),
+            adaptés aux usages portuaires et aux conditions maritimes locales.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Digues et ouvrages de protection portuaire</h3>
+          <p>
+            Conception et dimensionnement de digues et ouvrages de protection
+            contre la houle et les franchissements, visant à sécuriser les plans d’eau
+            et les infrastructures portuaires.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Brise-lames</h3>
+          <p>
+            Études de brise-lames émergés ou submersibles,
+            destinés à réduire l’agitation portuaire et à améliorer
+            les conditions d’exploitation des bassins.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Pontons flottants</h3>
+          <p>
+            Études et dimensionnement de pontons flottants,
+            modulaires ou spécifiques, adaptés aux conditions de vent,
+            de houle, de marnage et aux contraintes d’exploitation.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Cales de mise à l’eau</h3>
+          <p>
+            Conception de cales de mise à l’eau fonctionnelles et durables,
+            adaptées aux besoins des usagers professionnels et particuliers,
+            avec une attention particulière portée à la sécurité des manœuvres.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Ouvrages d’amarrage et de mouillage</h3>
+          <p>
+            Dimensionnement de systèmes d’amarrage et de mouillage,
+            adaptés aux types de navires et aux conditions environnementales locales.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SAVOIR-FAIRE -->
+    <section>
+      <h2 class="section-title">Notre savoir-faire en ingénierie maritime</h2>
+
+      <div class="mission-grid">
+        <div class="mission-card">
+          <h3>Études des besoins et programmation</h3>
+          <p>
+            Analyse des usages, contraintes du site et objectifs du maître d’ouvrage
+            pour définir un programme d’aménagement cohérent et réaliste.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Diagnostic d’ouvrages existants</h3>
+          <p>
+            Évaluation de l’état structurel, de la stabilité, des désordres et de la durabilité
+            pour orienter les décisions de maintenance ou de réhabilitation.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Dimensionnement et modélisation</h3>
+          <p>
+            Prédimensionnement et dimensionnement appuyés par des outils de modélisation
+            maritime (houle, agitation, efforts sur ouvrages).
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Coordination maritime & terrestre</h3>
+          <p>
+            Gestion des interfaces entre ouvrages maritimes, plateformes, accès,
+            voiries et réseaux, notamment pour les marinas et ports.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Suivi de travaux</h3>
+          <p>
+            Appui technique en phase travaux, visites de chantier,
+            visa des documents d’exécution et assistance à la réception.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Interventions en sites isolés</h3>
+          <p>
+            Prise en compte des contraintes logistiques, d’exploitation
+            et de maintenance propres aux sites éloignés.
+          </p>
         </div>
       </div>
     </section>
   </main>
 </div>
 
-<div class="page" id="expertise-section">
+<div class="page" id="expertise-section-elppr">
+  <br/><br/>
   <div class="page-hero">
-    <h1>EXPERTISE</h1>
+    <h1>ÉTUDES LITTORALES & PPR</h1>
   </div>
 
-  <section>
-    <div class="domain-card">
-      <div class="domain-content">
-        <h3>🌊 Expertise des processus littoraux et maritimes</h3>
-        <p class="subtitle">Comprendre le fonctionnement de nos milieux naturels pour une gestion durable</p>
-        <ul>
-          <li>Fonctionnement hydro-sédimentaire</li>
-          <li>Suivi et évolution du trait de côte</li>
-          <li>Évaluation des impacts anthropiques et climatiques</li>
-          <li>Mesure et analyse des conditions hydrodynamiques</li>
-          <li>Modélisation numérique des processus côtiers</li>
-        </ul>
-      </div>
-      <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300" alt="Littoral" class="domain-image">
-    </div>
+  <main>
 
-    <div class="domain-card">
-      <div class="domain-content">
-        <h3>🏖️ Aménagement du littoral</h3>
-        <p class="subtitle">Renforcer la résilience de nos côtes face aux impacts du changement climatique</p>
-        <ul>
-          <li>Prévention contre la submersion marine</li>
-          <li>Gestion des risques côtiers et protection contre l'érosion</li>
-          <li>Stratégie de gestion de la bande côtière</li>
-          <li>Préservation et restauration des écosystèmes littoraux</li>
-          <li>Vulnérabilité et adaptation au changement climatique</li>
-        </ul>
-      </div>
-      <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=300" alt="Aménagement" class="domain-image">
-    </div>
+    <!-- INTRO -->
 
-    <div class="domain-card">
-      <div class="domain-content">
-        <h3>⚓ Ouvrages maritimes et portuaires</h3>
-        <p class="subtitle">Concevoir des ouvrages éco-responsables au plus proche des besoins</p>
-        <ul>
-          <li>Émissaires et conduites sous-marines</li>
-          <li>Ouvrages et infrastructures portuaires</li>
-          <li>Quais, marinas et débarcadères</li>
-          <li>Travaux de dragage et rechargement de plage</li>
-          <li>Installation d'équipements en grande profondeur</li>
-        </ul>
-      </div>
-      <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=300" alt="Port" class="domain-image">
-    </div>
 
-    <div class="domain-card">
-      <div class="domain-content">
-        <h3>🚢 Économie bleue et développement du littoral</h3>
-        <p class="subtitle">Accompagner le développement au plus proche des acteurs économiques</p>
-        <ul>
-          <li>Plaisance et grande plaisance</li>
-          <li>Énergies marines renouvelables</li>
-          <li>Pêche et aquaculture</li>
-          <li>Transport maritime</li>
-          <li>Tourisme côtier durable</li>
-        </ul>
+      <section >
+        <div class="expertise-grid">
+          <div class="expertise-card">
+            <div class="expertise-icon"><img src="img/inconeppr.png" width="256px" /></div>
+            <h3>Ingénierie du littoral et gestion des risques côtiers en Polynésie française</h3>
+            <p>
+              Delande Ingénierie, bureau d’études spécialisé en ingénierie maritime et littorale,
+              accompagne les maîtres d’ouvrage publics, privés et les particuliers
+              dans la prévention des risques côtiers et la gestion durable du littoral.
+            </p>
+
+            <p>
+              Nous réalisons des études techniques adaptées aux environnements insulaires,
+              permettant de sécuriser les aménagements et de protéger les populations
+              face aux aléas naturels.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+    <!-- EXPERTISE -->
+    <section>
+      <h2 class="section-title">Notre expertise en études littorales et PPR</h2>
+
+      <div class="mission-grid">
+
+        <div class="mission-card">
+          <h3>Étude de l’aléa submersion marine</h3>
+          <p>
+            Analyse des zones exposées aux submersions marines pour les aménagements
+            existants ou futurs.
+          </p>
+          <p>
+            Nous accompagnons également les particuliers dans la constitution
+            et la validation de leur dossier auprès de la DCA, afin de respecter
+            la réglementation et sécuriser leurs projets.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Étude de stabilité des plages et du trait de côte</h3>
+          <p>
+            Évaluation de la stabilité du littoral, incluant l’évolution des plages
+            et du trait de côte face aux houles, marées et variations sédimentaires.
+          </p>
+          <p>
+            Ces études permettent d’anticiper l’érosion, de sécuriser les infrastructures
+            côtières et d’optimiser les projets d’aménagement.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Étude d’aménagement ou de création de plages</h3>
+          <p>
+            Conception et dimensionnement de projets d’aménagement ou de création de plages,
+            en intégrant la dynamique sédimentaire, les contraintes environnementales
+            et l’accessibilité.
+          </p>
+          <p>
+            Nos études garantissent des solutions fonctionnelles, durables et adaptées
+            aux usages récréatifs ou touristiques.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Étude hydro-sédimentaire</h3>
+          <p>
+            Analyse de la dynamique des sédiments et des écoulements côtiers,
+            afin de comprendre les phénomènes de transport sédimentaire,
+            d’érosion et d’accumulation.
+          </p>
+          <p>
+            Ces études permettent d’optimiser la conception des aménagements littoraux
+            et de prévenir les impacts environnementaux.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Étude de protection du littoral contre l’érosion</h3>
+          <p>
+            Conception et dimensionnement d’ouvrages de protection côtière
+            (enrochements, digues, brise-lames, protections naturelles),
+            pour limiter l’érosion et sécuriser les zones bâties ou naturelles.
+          </p>
+          <p>
+            Nous proposons des solutions adaptées aux contraintes techniques,
+            environnementales et réglementaires locales.
+          </p>
+        </div>
+
       </div>
-      <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300" alt="Économie bleue" class="domain-image">
-    </div>
-  </section>
+    </section>
+
+  </main>
+</div>
+
+
+
+<div class="page" id="expertise-section-tsm">
+  <br/><br/>
+  <div class="page-hero">
+    <h1>TRAVAUX SOUS-MARINS</h1>
+  </div>
+
+  <main>
+    <!-- INTRO -->
+    <section >
+      <div class="expertise-grid">
+        <div class="expertise-card">
+          <div class="expertise-icon"><img src="img/travauxmarins.png" width="256px" /></div>
+          <h3>Concevoir et sécuriser des ouvrages sous-marins en milieux contraints</h3>
+          <p>
+            Delande Ingénierie accompagne les maîtres d’ouvrage publics et privés
+            dans la conception et l’analyse d’ouvrages et d’équipements sous-marins
+            en Polynésie française.
+          </p>
+
+          <p>
+            Nos études s’appuient sur une maîtrise des contraintes bathymétriques,
+            géotechniques, hydrodynamiques et environnementales propres aux milieux
+            lagonaires et océaniques, y compris en grande profondeur.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- EXPERTISE -->
+    <section>
+      <h2 class="section-title">Nos domaines d’expertise en travaux sous-marins</h2>
+
+      <div class="mission-grid">
+
+        <div class="mission-card">
+          <h3>Conduites sous-marines</h3>
+          <p>
+            Dimensionnement de conduites sous-marines (rejets, prises d’eau, réseaux),
+            intégrant les contraintes de pose, de stabilité, d’hydrodynamique,
+            de flottabilité et de durabilité des matériaux.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Ancrages, corps-morts et systèmes de mouillage</h3>
+          <p>
+            Dimensionnement de systèmes d’ancrage et de mouillage :
+            ancrages écologiques, corps-morts béton, lignes de mouillage
+            et dispositifs d’amarrage, adaptés aux charges environnementales
+            et aux usages nautiques.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Équipements sous-marins en grande profondeur</h3>
+          <p>
+            Expertise et études techniques pour l’installation d’équipements
+            sous-marins en grande profondeur, tels que les systèmes SWAC
+            (Sea Water Air Conditioning).
+          </p>
+          <p>
+            Analyse des contraintes mécaniques, hydrodynamiques
+            et d’exploitation associées.
+          </p>
+        </div>
+
+        <div class="mission-card">
+          <h3>Diagnostics d’ouvrages sous-marins</h3>
+          <p>
+            Diagnostics techniques d’ouvrages existants :
+            évaluation de l’état structurel, de la stabilité,
+            des désordres et de la durabilité des installations
+            sous-marines.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTEXTE INSULAIRE -->
+    <section >
+      <div class="expertise-grid">
+        <div class="expertise-card">
+           <h3>Une expertise adaptée aux environnements insulaires</h3>
+          <p>
+            Grâce à une connaissance fine des conditions locales
+            (houle, courants, bathymétrie, accès chantier,
+            contraintes environnementales),
+            Delande Ingénierie propose des solutions techniques fiables
+            et adaptées aux contextes insulaires et aux sites isolés.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
 
 <div class="page" id="mission-section">
@@ -1022,43 +1514,54 @@
 </div>
 
 <div class="page" id="contact-section">
+  <br/><br/>
   <div class="page-hero">
     <h1>CONTACTEZ-NOUS</h1>
   </div>
 
-  <section>
-    <div class="contact-info-grid">
-      <div class="contact-card">
-        <div class="contact-icon">📧</div>
-        <h3>Email</h3>
-        <p><a href="mailto:contact@delande-ingenierie.pf">contact@delande-ingenierie.pf</a></p>
+  <section id="contact-page">
+
+    <div class="contact-card contact-card--single">
+      <div class="contact-header">
+        <img src="./img/logo.svg" alt="Logo Delande Ingénierie" class="contact-logo">
+
+        <div class="contact-brand">
+          <h3 class="contact-company">Delande Ingénierie</h3>
+          <p class="contact-tagline">Études littorales & aménagements maritimes</p>
+        </div>
       </div>
-      <div class="contact-card">
-        <div class="contact-icon">📞</div>
-        <h3>Téléphone</h3>
-        <p><a href="tel:+689">+689 87 75 30 06</a></p>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">📍</div>
-        <h3>Adresse</h3>
-        <p>Polynésie Française<br>Tahiti</p>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">🕐</div>
-        <h3>Horaires</h3>
-        <p>Lundi - Vendredi<br>8h00 - 17h00</p>
+
+      <div class="contact-details">
+        <div class="contact-row">
+          <span class="contact-label">Adresse</span>
+          <span>Polynésie Française – Tahiti</span>
+        </div>
+
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <a href="mailto:contact@delande-ingenierie.pf">contact@delande-ingenierie.pf</a>
+        </div>
+
+        <div class="contact-row">
+          <span class="contact-label">Téléphone</span>
+          <a href="tel:+689">+689 87 75 30 06</a>
+        </div>
+
+        <div class="contact-row">
+          <span class="contact-label">Whatsapp</span>
+          <a href="https://wa.me/68987753006" target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
-
-  <section style="background: var(--light-gray); padding: 5rem 5%; margin-top: 5rem;">
-    <div style="max-width: 1400px; margin: 0 auto;">
-      <h2 class="section-title">Zone d'intervention</h2>
-      <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.2rem; line-height: 1.9; color: var(--text-gray); margin-bottom: 2rem;">
+  <section >
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <h3>Zone d'intervention</h3>
+        <p>
           Basé à Tahiti, DELANDE INGENIERIE intervient sur l'ensemble de la Polynésie Française : Îles de la Société, Tuamotu, Marquises, Australes et Gambier.
         </p>
-        <p style="font-size: 1.2rem; line-height: 1.9; color: var(--text-gray);">
+        <p>
           Nous développons également notre expertise à l'international pour des projets d'ingénierie maritime dans le Pacifique et au-delà.
         </p>
       </div>
