@@ -358,6 +358,9 @@
         gap:3rem
     }
 
+    .expertise-grid-home {
+       margin-top:-100px
+    }
     .realisation-card
     {
         position:relative;
@@ -524,6 +527,10 @@
 
     /* Card Styles - Shared */
 
+  .expertise-card-homepage {
+    padding:0rem !important;
+    min-height: 38vh;
+    }
 
     .expertise-card,
     .mission-card {
@@ -760,7 +767,12 @@
       .burger {
         display: block;
       }
-
+      .expertise-text-align {
+             margin-top:0px;
+       }
+      .expertise-card-homepage {
+         padding: 2.5rem;
+       }
       .domain-card,
       .contact-container {
         grid-template-columns: 1fr !important;
@@ -843,7 +855,13 @@
   flex-direction: column;
   gap: 8px;
 }
+.expertise-text-align {
+       margin-top:-50px
+ }
 
+  .margin-bottom {
+    margin-bottom:41px;
+    }
   </style>
   <style>
     /* Sous-menu Expertise */
@@ -923,22 +941,28 @@
   <main>
     <section id="expertise">
 <!--      <h3 class="section-title">Domaines d'expertise</h3>-->
-      <div class="expertise-grid">
-        <div class="expertise-card">
+      <div class="expertise-grid expertise-grid-home">
+        <a onclick="navigateTo('expertise-section-am')">
+        <div class="expertise-card-homepage expertise-card">
           <div class="expertise-icon"><img src="img/icone.png" width="256px" /></div>
-          <h3>Aménagements Maritimes</h3>
+          <h3 class="expertise-text-align">Aménagements Maritimes</h3>
 <!--          <p>Conception et réalisation de quais, marinas et débarcadères adaptés aux environnements côtiers et offshore.</p>-->
         </div>
-        <div class="expertise-card">
+        </a>
+        <a onclick="navigateTo('expertise-section-elppr')">
+        <div class="expertise-card-homepage expertise-card">
           <div class="expertise-icon"><img src="img/inconeppr.png" width="256px" /></div>
-          <h3>Études Littorales et PPR</h3>
+          <h3 class="expertise-text-align">Études Littorales et PPR</h3>
 <!--          <p>Analyse du trait de côte et évaluation de l'aléa submersion pour protéger les zones côtières.</p>-->
         </div>
-        <div class="expertise-card">
+        </a>
+        <a onclick="navigateTo('expertise-section-tsm')">
+        <div class="expertise-card-homepage expertise-card">
           <div class="expertise-icon"><img src="img/travauxmarins.png" width="256px" /></div>
-          <h3>Travaux Sous-Marins</h3>
+          <h3 class="expertise-text-align">Travaux Sous-Marins</h3>
 <!--          <p>Analyse de pose et dimensionnement de conduites sous-marines pour tous types d'infrastructures.</p>-->
         </div>
+        </a>
       </div>
     </section>
 
@@ -1057,7 +1081,7 @@
       <div class="expertise-grid">
         <div class="expertise-card">
           <div class="expertise-icon"><img src="img/icone.png" width="256px" /></div>
-          <h3>Concevoir des ouvrages maritimes durables et adaptés au fenua</h3>
+          <h3 class="expertise-text-align">Concevoir des ouvrages maritimes durables et adaptés au fenua</h3>
           <p>
             Delande Ingénierie, bureau d’études spécialisé en ingénierie maritime,
             accompagne les maîtres d’ouvrage publics et privés dans la conception,
@@ -1106,14 +1130,6 @@
           </p>
         </div>
 
-        <div class="mission-card">
-          <h3>Brise-lames</h3>
-          <p>
-            Études de brise-lames émergés ou submersibles,
-            destinés à réduire l’agitation portuaire et à améliorer
-            les conditions d’exploitation des bassins.
-          </p>
-        </div>
 
         <div class="mission-card">
           <h3>Pontons flottants</h3>
@@ -1148,8 +1164,8 @@
     <section>
       <h2 class="section-title">Notre savoir-faire en ingénierie maritime</h2>
 
-      <div class="mission-grid">
-        <div class="mission-card">
+      <div class="savoirfaire-horizontal">
+        <div class="mission-card margin-bottom">
           <h3>Études des besoins et programmation</h3>
           <p>
             Analyse des usages, contraintes du site et objectifs du maître d’ouvrage
@@ -1157,7 +1173,7 @@
           </p>
         </div>
 
-        <div class="mission-card">
+        <div class="mission-card margin-bottom">
           <h3>Diagnostic d’ouvrages existants</h3>
           <p>
             Évaluation de l’état structurel, de la stabilité, des désordres et de la durabilité
@@ -1165,7 +1181,7 @@
           </p>
         </div>
 
-        <div class="mission-card">
+        <div class="mission-card margin-bottom">
           <h3>Dimensionnement et modélisation</h3>
           <p>
             Prédimensionnement et dimensionnement appuyés par des outils de modélisation
@@ -1173,7 +1189,7 @@
           </p>
         </div>
 
-        <div class="mission-card">
+        <div class="mission-card margin-bottom">
           <h3>Coordination maritime & terrestre</h3>
           <p>
             Gestion des interfaces entre ouvrages maritimes, plateformes, accès,
@@ -1181,7 +1197,7 @@
           </p>
         </div>
 
-        <div class="mission-card">
+        <div class="mission-card margin-bottom">
           <h3>Suivi de travaux</h3>
           <p>
             Appui technique en phase travaux, visites de chantier,
@@ -1502,8 +1518,7 @@
       </div>
 
       <div class="myrealisation-card">
-        <img src="https://images.unsplash.com/photo-1589310243389-96a1ca5f4ce0?w=300" alt="Études" class="myrealisation-image">
-        <div class="myrealisation-content">
+         <div class="myrealisation-content">
           <div class="category">Études Spécialisées</div>
           <h3>Étude Hydrodynamique - Rangiroa</h3>
           <p>Campagne de mesures et modélisation numérique des courants dans la passe. Analyse des conditions de navigation et recommandations pour l'aménagement du chenal.</p>
@@ -1555,7 +1570,7 @@
     </div>
   </section>
   <section >
-    <div class="expertise-grid">
+    <div class="expertise-grid" >
       <div class="expertise-card">
         <h3>Zone d'intervention</h3>
         <p>
