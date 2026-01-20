@@ -48,7 +48,7 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 100;
+      z-index: 10000 !important;
       background: var(--card-bg);
       box-shadow: 0 2px 10px #0000001a;
     }
@@ -191,7 +191,7 @@
       justify-content: center;
       padding: 40px 20px;
       pointer-events: none;
-      z-index: 2;
+
       background: linear-gradient(180deg, #0b1b2b1f 0%, #0b1b2b47 40%, #0b1b2b2e 100%);
     }
 
@@ -772,6 +772,7 @@
        }
       .expertise-card-homepage {
          padding: 2.5rem;
+         z-index:10000; !important
        }
       .domain-card,
       .contact-container {
@@ -829,7 +830,6 @@
   min-width: 240px;
   display: none;
   flex-direction: column;
-  z-index: 200;
 }
 
 .submenu a {
