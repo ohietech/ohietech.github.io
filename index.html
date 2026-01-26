@@ -1631,15 +1631,16 @@ window.addEventListener('scroll', () => {
   header.style.boxShadow = window.pageYOffset > 100 ? '0 4px 20px rgba(0,0,0,0.15)' : '0 2px 15px rgba(0,0,0,0.1)';
 });
 
-  window.addEventListener('popstate', (event) => {
-  // Si l'état contient un pageId, on navigue vers lui sans rajouter une étape d'historique
+
+window.addEventListener('popstate', (event) => {
   if (event.state && event.state.pageId) {
     navigateTo(event.state.pageId, false);
   } else {
-    // Par défaut ou si on revient au tout début, on affiche l'accueil
-    navigateTo('home', false);
+    // Si on revient au tout début (index.html sans état enregistré)
+    navigateTo('accueil-section', false);
   }
 });
+
 
 // Optionnel : Gérer la page au chargement initial (ex: si l'utilisateur arrive via monsite.fr/#contact)
 window.addEventListener('load', () => {
